@@ -1,0 +1,31 @@
+[tool.black]
+line-length = 88
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+strict_equality = true
+strict_optional = false
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
+disallow_any_unimported = false
+disallow_untyped_calls = true
+exclude = [
+    '__pypackages__',
+]
+
+[tool.isort]
+profile = "black"
+src_paths = ["src", "tests"]
+
+[tool.autoflake]
+in_place = true
+remove_all_unused_imports = true
+ignore_pass_after_docstring = true
+remove_unused_variables = false

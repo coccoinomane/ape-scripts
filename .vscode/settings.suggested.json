@@ -1,0 +1,29 @@
+{
+  "python.formatting.provider": "black",
+  "editor.formatOnSave": true,
+  "[solidity]": {
+    "editor.formatOnSave": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true,
+    "pypi-*/": true
+  },
+  "python.analysis.typeCheckingMode": "off",
+  "python.linting.mypyEnabled": true,
+  "python.languageServer": "Pylance",
+  "python.analysis.autoImportCompletions": true,
+  "python.linting.enabled": true,
+  "rewrap.autoWrap.enabled": true,
+  "rewrap.wrappingColumn": 80,
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "solidity.enabledAsYouTypeCompilationErrorCheck": false
+}
