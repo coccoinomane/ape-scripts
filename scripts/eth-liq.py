@@ -7,7 +7,9 @@ from brownie.utils import color
 def main(
     router_address: str,
     account: str,
+    tx_type: int = 0,  # TODO: not working?
     token_address: str = None,
+    ask_before_liq: bool = True,
     value_eth: int = 10**13,
     value_token: int = 10**18,
 ) -> None:
@@ -32,14 +34,22 @@ def main(
     info(f"ROUTER {router._name} LOADED")
     info(f"LOADING ACCOUNT {account} ON NETWORK {network.show_active()}")
     accounts.load(account)
+    tx_params = {"from": accounts[0]}
+    if tx_type:
+        tx_params["type"] = tx_type
     if not token_address:
         info(f"DEPLOYING TEST TOKEN")
-        token = Token.deploy("Test token", "TST", 18, 1e9 * 1e18, {"from": accounts[0]})
+        token = Token.deploy("Test token", "TST", 18, 1e9 * 1e18, tx_params)
     else:
         info(f"FETCHING TOKEN {token_address} FROM EXPLORER")
         token = Contract.from_explorer(token_address)
+    info(f"TOKEN ADDRESS: {token.address}")
     info(f"APPROVING ROUTER TO SPEND TOKENS")
-    token.approve(router_address, value_token, {"from": accounts[0]})
+    token.approve(router_address, value_token, tx_params)
+    if ask_before_liq:
+        info(f"ADD LIQUIDITY? [Y/n]:")
+        if input().lower() == "n":
+            return
     info(f"ADDING LIQUIDITY")
     router.addLiquidityETH(
         token,
@@ -48,7 +58,7 @@ def main(
         0,
         accounts[0],
         time() + 60,
-        {"from": accounts[0], "value": value_eth},
+        tx_params | {"value": value_eth},
     )
 
 
