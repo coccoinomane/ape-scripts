@@ -12,6 +12,10 @@ from src.token import deploy_or_fetch_token
 @click.option("--token")
 @network_option()
 def cli(network: str, account: str, token: str) -> None:
-    """Deploy a test token"""
+    """Deploy a test token
+
+    Example:
+        ape run token --account <account alias> --network arbitrum:mainnet:https://arb1.arbitrum.io/rpc
+    """
     check_live()
     deploy_or_fetch_token(token_address=token, sender=load_account(account))
