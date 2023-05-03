@@ -109,10 +109,7 @@ __pypackages__/
 pypi-*/
 
 # Brownie
-.history
-.hypothesis/
-build/
-reports/
+.build
 
 # other
 .vscode/settings.json

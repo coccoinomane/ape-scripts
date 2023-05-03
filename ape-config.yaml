@@ -1,0 +1,8 @@
+plugins:
+- name: solidity
+- name: arbitrum
+- name: polygon
+- name: etherscan
+- name: avalanche
+- name: bsc
+- name: optimism
