@@ -1,4 +1,3 @@
-import ape
 import click
 from ape.cli import NetworkBoundCommand, network_option
 
