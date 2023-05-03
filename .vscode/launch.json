@@ -5,8 +5,7 @@
             "name": "ape run token",
             "type": "python",
             "request": "launch",
-            "module": "ape",
-            "cwd": "${workspaceFolder}/.venv/bin",
+            "program": "${workspaceFolder}/.venv/bin/ape",
             "args": [
                 "run",
                 "token"

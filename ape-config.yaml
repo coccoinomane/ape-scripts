@@ -6,3 +6,4 @@ plugins:
 - name: avalanche
 - name: bsc
 - name: optimism
+- name: zksync
