@@ -12,18 +12,20 @@ def deploy_or_fetch_token(
     name: str = "Test Token",
     symbol: str = "TST",
     decimals: int = 18,
-    initial_supply: int = 10**9 * 10**18,
+    initial_supply: int = 10**9,
     token_address: str = None,
     **tx_params: Any,
 ) -> ContractInstance:
-    """Deploy given token, or fetch it if the token address is given."""
+    """Deploy given token, or fetch it if the token address is given.
+
+    Supply is given in units of the token (not wei)."""
     if not token_address:
         info(f"DEPLOYING TEST TOKEN")
         token = ape.project.get_contract("TokenInitialHolder").deploy(
             name,
             symbol,
             decimals,
-            initial_supply,
+            initial_supply * 10**decimals,
             sender.address,
             publish=False,
             sender=sender,

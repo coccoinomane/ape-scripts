@@ -21,3 +21,6 @@ def check_live() -> None:
         warn(f"You are on live chain {ape.networks.network.chain_id}. Continue? [y/N]:")
         if input().lower() != "y":
             exit(1)
+    info(
+        f"CONNECTED TO {ape.networks.network.name} CHAIN {ape.networks.network.chain_id}"
+    )

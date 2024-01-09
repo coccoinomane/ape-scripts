@@ -1,19 +1,22 @@
 import click
-from ape.cli import NetworkBoundCommand, network_option
+from ape.cli import network_option
+from ape.cli.commands import ConnectedProviderCommand
 
 from src.account import load_account
 from src.log import check_live
 from src.token import deploy_or_fetch_token
 
 
-@click.command(cls=NetworkBoundCommand)
+@click.command(cls=ConnectedProviderCommand)
 @click.option(
     "--account",
     help="Alias of the deployer account.  To use a test account (e.g. on foundry), use TEST::0, TEST::1, etc",
 )
 @click.option("--name", default="Test Token")
 @click.option("--symbol", default="TST")
-@click.option("--supply", type=int, default=10**9 * 10**18)
+@click.option(
+    "--supply", type=int, default=10**9, help="Supply in units of the token (not wei)"
+)
 @click.option("--token-address")
 @network_option()
 def cli(
