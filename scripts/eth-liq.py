@@ -5,7 +5,8 @@ from ape.cli import NetworkBoundCommand, network_option
 
 from src.account import load_account
 from src.contract import fetch_contract
-from src.log import check_live, info
+from src.log import info
+from src.network import check_live
 from src.token import approve_token_if_needed, deploy_or_fetch_token
 
 

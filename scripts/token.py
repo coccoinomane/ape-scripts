@@ -3,7 +3,7 @@ from ape.cli import network_option
 from ape.cli.commands import ConnectedProviderCommand
 
 from src.account import load_account
-from src.log import check_live
+from src.network import check_live
 from src.token import deploy_or_fetch_token
 
 
