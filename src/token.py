@@ -21,6 +21,8 @@ def deploy_or_fetch_token(
     Supply is given in units of the token (not wei)."""
     if not token_address:
         info(f"DEPLOYING TEST TOKEN")
+        if tx_params["type"] == 0:
+            info(f"USING LEGACY TRANSACTIONS")
         token = ape.project.get_contract("TokenInitialHolder").deploy(
             name,
             symbol,

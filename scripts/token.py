@@ -17,10 +17,23 @@ from src.token import deploy_or_fetch_token
 @click.option(
     "--supply", type=int, default=10**9, help="Supply in units of the token (not wei)"
 )
-@click.option("--token-address")
+@click.option(
+    "--token-address", help="If provided, return info about an existing token"
+)
+@click.option(
+    "--legacy",
+    is_flag=True,
+    help="If provided, send legacy transactions (pre EIP-1559)",
+)
 @network_option()
 def cli(
-    network: str, account: str, name: str, symbol: str, supply: int, token_address: str
+    network: str,
+    account: str,
+    name: str,
+    symbol: str,
+    supply: int,
+    token_address: str,
+    legacy: bool,
 ) -> None:
     """Deploy a test token
 
@@ -34,4 +47,5 @@ def cli(
         symbol=symbol,
         initial_supply=supply,
         token_address=token_address,
+        type=0 if legacy else None,
     )
