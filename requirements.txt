@@ -49,7 +49,6 @@ matplotlib-inline==0.1.6
 morphys==1.0
 msgspec==0.14.2
 multidict==6.0.4
-mypy-extensions==0.4.4
 numpy==1.24.3
 packaging==23.1
 pandas==1.5.3
