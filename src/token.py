@@ -1,12 +1,14 @@
-from typing import Any, Dict
+from typing import Any
 
 import ape
+from ape.api.accounts import AccountAPI
 from ape.contracts import ContractInstance
 
 from src.log import info
 
 
 def deploy_or_fetch_token(
+    sender: AccountAPI,
     name: str = "Test Token",
     symbol: str = "TST",
     decimals: int = 18,
@@ -17,8 +19,15 @@ def deploy_or_fetch_token(
     """Deploy given token, or fetch it if the token address is given."""
     if not token_address:
         info(f"DEPLOYING TEST TOKEN")
-        token = ape.project.get_contract("Token").deploy(
-            name, symbol, decimals, initial_supply, publish=False, **tx_params
+        token = ape.project.get_contract("TokenInitialHolder").deploy(
+            name,
+            symbol,
+            decimals,
+            initial_supply,
+            sender.address,
+            publish=False,
+            sender=sender,
+            **tx_params,
         )
     else:
         info(f"FETCHING TOKEN {token_address} FROM EXPLORER")

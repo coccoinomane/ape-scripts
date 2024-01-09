@@ -1,5 +1,6 @@
 plugins:
 - name: solidity
+- name: ape-foundry
 - name: arbitrum
 - name: polygon
 - name: etherscan

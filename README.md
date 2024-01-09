@@ -19,7 +19,7 @@ ape accounts import <account alias>
 You might need to install ape plugins:
 
 ```bash
-ape plugins install solidity arbitrum polygon etherscan avalanche bsc optimism
+ape plugins install solidity ape-foundry arbitrum polygon etherscan avalanche bsc optimism
 ```
 
 Then call command, for example deploy token on Arbitrum:
