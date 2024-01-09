@@ -7,9 +7,12 @@ from src.token import deploy_or_fetch_token
 
 
 @click.command(cls=NetworkBoundCommand)
-@click.option("--account")
-@click.option("--name", required=True)
-@click.option("--symbol", required=True)
+@click.option(
+    "--account",
+    help="Alias of the deployer account.  To use a test account (e.g. on foundry), use TEST::0, TEST::1, etc",
+)
+@click.option("--name", default="Test Token")
+@click.option("--symbol", default="TST")
 @click.option("--supply", type=int, default=10**9 * 10**18)
 @click.option("--token-address")
 @network_option()

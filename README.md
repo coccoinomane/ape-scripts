@@ -50,6 +50,14 @@ More details here:
 - https://docs.apeworx.io/ape/stable/userguides/networks.html#custom-network-connection
 
 
+# Local chains
+
+To use a local chain like Foundry's Anvil, Gananche, or Hardhat network, just specify it with the `--network` flag, and specify the test account with TEST::0, TEST::1, etc:
+
+```bash
+ape run token --account TEST::0 --network ::foundry
+```
+
 # To do
 
 - Find contract creations
