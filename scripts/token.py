@@ -8,13 +8,24 @@ from src.token import deploy_or_fetch_token
 
 @click.command(cls=NetworkBoundCommand)
 @click.option("--account")
-@click.option("--token")
+@click.option("--name", required=True)
+@click.option("--symbol", required=True)
+@click.option("--supply", type=int, default=10**9 * 10**18)
+@click.option("--token-address")
 @network_option()
-def cli(network: str, account: str, token: str) -> None:
+def cli(
+    network: str, account: str, name: str, symbol: str, supply: int, token_address: str
+) -> None:
     """Deploy a test token
 
     Example:
-        ape run token --account <account alias> --network arbitrum:mainnet:https://arb1.arbitrum.io/rpc
+        ape run token --account <account alias> --name HarryPotterObamaSonic10Inu --symbol BITCOIN --network arbitrum:mainnet:https://arb1.arbitrum.io/rpc
     """
     check_live()
-    deploy_or_fetch_token(token_address=token, sender=load_account(account))
+    deploy_or_fetch_token(
+        sender=load_account(account),
+        name=name,
+        symbol=symbol,
+        initial_supply=supply,
+        token_address=token_address,
+    )
